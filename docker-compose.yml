@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    image: python:3.8
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    command: ["python", "app.py"]
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:alpine"
+
+  # Add more services as needed
